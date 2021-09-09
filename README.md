@@ -1,4 +1,11 @@
 # money-forward-coding-challenge
+A mini app to manage wallet accounts
+- Use Typescript
+- Use VueJs
+- Use Bootstrap Vue UI framework
+- Write unit test for some components and services using Jest
+- Handle errors when there is network error connection, API failed fetching or no results by pop up
+- Handle 404 page
 
 ## Project setup
 ```
