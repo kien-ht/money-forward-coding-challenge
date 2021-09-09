@@ -1,6 +1,9 @@
 {
   "name": "money-forward-coding-challenge",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.15.3"
+  },
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

@@ -1,11 +1,11 @@
-import BaseService from './base-service'
+import BaseService from "./base-service";
 
 export default class AccountService extends BaseService {
-    static get resource(): string {
-        return '/accounts'
-    }
+  static get resource(): string {
+    return "/accounts";
+  }
 
-    static async getAccountDetail(id: string) {
-        return await this.get(id)
-    }
+  static async getAccountDetail(id: string): Promise<unknown> {
+    return await this.get(id);
+  }
 }

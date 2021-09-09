@@ -39,7 +39,7 @@ export default Vue.extend({
 
   directives: {
     focus: {
-      inserted(el, binding, vnode) {
+      inserted(el) {
         el.focus();
       },
     },

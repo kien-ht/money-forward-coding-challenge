@@ -1,35 +1,25 @@
-import axios from 'axios'
-import Vue from 'vue'
-
+import axios from "axios";
+import Vue from "vue";
 export const baseAxios = axios.create({
-    baseURL: 'https://sample-accounts-api.herokuapp.com'
-})
-
+  baseURL: "https://sample-accounts-api.herokuapp.com",
+});
 export default class BaseService {
-    static get resource(): string {
-        throw new Error('Resource getter is not defined!')
+  static get resource(): string {
+    throw new Error("Resource getter is not defined!");
+  }
+  static errorHandler(): void {
+    const vm: { $loading: HTMLFormElement } = new Vue();
+    vm.$loading?.progressOff();
+  }
+  static responseWrapper(res: { data: unknown }): unknown {
+    return res.data;
+  }
+  static async get(id: string | number): Promise<unknown> {
+    try {
+      const response = await baseAxios.get(`${this.resource}/${id}`);
+      return this.responseWrapper(response);
+    } catch (err) {
+      this.errorHandler();
     }
-
-    static get $axios() {
-        return baseAxios
-    }
-
-    static errorHandler(err: any) {
-        const vm: { $loading: any } = new Vue()
-        vm.$loading?.progressOff()
-        console.log(err)
-    }
-
-    static responseWrapper(res: { data: object }) {
-        return res.data
-    }
-
-    static async get(id: string|number) {
-        try {
-            const response = await this.$axios.get(`${this.resource}/${id}`)
-            return this.responseWrapper(response)
-        } catch (err) {
-            this.errorHandler(err)
-        }
-    }
+  }
 }

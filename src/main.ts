@@ -2,22 +2,22 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import services from './services'
+import services from "./services";
 
-import { BootstrapVue } from 'bootstrap-vue'
+import { BootstrapVue } from "bootstrap-vue";
 
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 import "@/design/index.scss";
 
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false;
-Object.defineProperty(Vue.prototype, '$api', {
+Object.defineProperty(Vue.prototype, "$api", {
   get() {
-    return services
-  }
-})
+    return services;
+  },
+});
 
 new Vue({
   router,

@@ -1,14 +1,14 @@
-import Vue from 'vue'
+import Vue from "vue";
 import BootstrapVue from "bootstrap-vue";
-import { createLocalVue } from '@vue/test-utils'
+import { createLocalVue } from "@vue/test-utils";
 
-Vue.use(BootstrapVue)
-Vue.config.productionTip = false
+Vue.use(BootstrapVue);
+Vue.config.productionTip = false;
 
-let localVue = createLocalVue()
+let localVue = createLocalVue();
 
-localVue.use(BootstrapVue)
+localVue.use(BootstrapVue);
 
 export default {
-  localVue
-}
+  localVue,
+};
