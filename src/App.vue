@@ -1,32 +1,60 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Loading ref="loadingRef" />
+    <NotificationModal ref="notificationModalRef" />
     <router-view />
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Vue from "vue";
+import Loading from "@/components/Loading.vue";
+import NotificationModal from "@/components/NotificationModal.vue";
 
-#nav {
-  padding: 30px;
-}
+import { baseAxios } from "@/services/base-service";
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+export default Vue.extend({
+  name: "App",
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  components: {
+    Loading,
+    NotificationModal,
+  },
+
+  async created() {
+    this.setupAxiosInterceptors();
+    this.buildCommonComponentToRoot();
+  },
+
+  methods: {
+    // region [PRIVATE]
+    setupAxiosInterceptors() {
+      baseAxios.interceptors.request.use(
+        (config) => {
+          this.$refs.loadingRef.progressOn();
+          return config;
+        },
+        (err) => {
+          this.$refs.loadingRef.progressOff();
+          return Promise.reject(err);
+        }
+      );
+      baseAxios.interceptors.response.use((config) => {
+        this.$refs.loadingRef.progressOff();
+        return config;
+      });
+    },
+
+    buildCommonComponentToRoot() {
+      Object.defineProperty(this.$root, "notify", {
+        get: () => this.$refs.notificationModalRef,
+      });
+      Object.defineProperty(Vue.prototype, "$loading", {
+        get: () => this.$refs.loadingRef,
+      });
+    },
+
+    // end region
+  },
+});
+</script>

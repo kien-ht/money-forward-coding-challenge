@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserSearchPage.vue snapshot 1`] = `
+<div class="layout-wrapper">
+  <div class="page-topbar bg-white">
+    <router-link-stub to="/"><span><img src="@/assets/money-forward-logo.png" alt="" height="50"></span></router-link-stub>
+  </div>
+  <div class="h-100 container-fluid">
+    <div class="row h-100">
+      <div class="bg-warning py-5 px-4 d-none d-md-block col-3">
+        <ul class="nav nav-pills flex-column"><button type="button" class="btn w-100 btn-dark">Account Search</button></ul>
+      </div>
+      <div class="p-5 col">
+        <div role="group" class="input-group account-input-group mb-3 input-group-md">
+          <!----><input type="text" placeholder="Type user_id to search" class="form-control" aria-describedby="input-live-help input-live-feedback">
+          <div class="input-group-append"><button text="Button" type="button" disabled="disabled" class="btn btn-dark btn-md disabled">Search</button></div>
+          <div id="input-live-feedback" class="invalid-feedback">
+            You can't search with an empty text!
+          </div>
+          <!---->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

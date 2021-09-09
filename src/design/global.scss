@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  background-color: #f3f3f9;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
